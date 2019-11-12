@@ -1,0 +1,249 @@
+extends ../layout
+
+block content
+    .wrapper: .response.container: .content
+        if result
+            .icon
+                img(src="/images/#{result.icon}.svg" alt="")
+            h1=result.header
+            section
+                p= result.message
+            pre(style="color:green;font-size: 12px;font-weight: bold;text-align: left;overflow-x: scroll;")
+                | #{responsed}
+        else
+            section
+                p Test another transaction or see the Braintree API response.
+
+    section
+      a.button.primary.back(href="/checkouts/new")
+        span Test Another Transaction
+
+    aside.drawer.dark
+        header: .content.compact
+            a.braintree(href='https://developers.braintreepayments.com', target='_blank') Braintree
+            h3 API Response
+
+        article.content.compact
+            section
+                h5 Customers
+                if result.customer
+                    table(cellpadding="0" cellspacing="0")
+                        tbody
+                            tr
+                                th result.customer.id
+                                td= result.customer.id
+                            tr
+                                th result.customer.merchantId
+                                td= result.customer.merchantId
+                            tr
+                                th result.customer.firstName
+                                td= result.customer.firstName
+                            tr
+                                th result.customer.lastName
+                                td= result.customer.lastName
+                            tr
+                                th result.customer.company
+                                td= result.customer.company
+                            tr
+                                th result.customer.email
+                                td= result.customer.email
+                            tr
+                                th result.customer.phone
+                                td= result.customer.phone
+                            tr
+                                th result.customer.fax
+                                td= result.customer.fax
+                            tr
+                                th result.customer.website
+                                td= result.customer.website
+                            tr
+                                th result.customer.createdAt
+                                td= result.customer.createdAt
+                            tr
+                                th result.customer.updatedAt
+                                td= result.customer.updatedAt
+                            tr
+                                th result.customer.customFields
+                                td= result.customer.customFields
+                            tr
+                                th result.customer.globalId
+                                td= result.customer.globalId
+                            tr
+                    if result.customer.creditCards 
+                        if result.customer.creditCards.length 
+                            section
+                                h5 CreditCards
+                                each creditcard, index in result.customer.paymentMethods
+                                    h6 Credit Card ##{index}
+                                    table(cellpadding="0" cellspacing="0")
+                                        tbody
+                                            tr
+                                                th creditcard.bin
+                                                td= creditcard.bin
+                                            tr
+                                                th creditcard.cardType
+                                                td= creditcard.cardType
+                                            tr
+                                                th creditcard.cardholderName
+                                                td= creditcard.cardholderName
+                                            tr
+                                                th creditcard.commercial
+                                                td= creditcard.commercial
+                                            tr
+                                                th creditcard.countryOfIssuance
+                                                td= creditcard.countryOfIssuance
+                                            tr
+                                                th creditcard.createdAt
+                                                td= creditcard.createdAt
+                                            tr
+                                                th creditcard.customerId
+                                                td= creditcard.customerId
+                                            tr
+                                                th creditcard.customerLocation
+                                                td= creditcard.customerLocation
+                                            tr
+                                                th creditcard.debit
+                                                td= creditcard.debit
+                                            tr
+                                                th creditcard.default
+                                                td= creditcard.default
+                                            tr
+                                                th creditcard.durbinRegulated
+                                                td= creditcard.durbinRegulated
+                                            tr
+                                                th creditcard.expirationMonth
+                                                td= creditcard.expirationMonth
+                                            tr
+                                                th creditcard.expirationYear
+                                                td= creditcard.expirationYear
+                                            tr
+                                                th creditcard.expired
+                                                td= creditcard.expired
+                                            tr
+                                                th creditcard.globalId
+                                                td= creditcard.globalId
+                                            tr
+                                                th creditcard.healthcare
+                                                td= creditcard.healthcare
+                                            tr
+                                                th creditcard.imageUrl
+                                                td= creditcard.imageUrl
+                                            tr
+                                                th creditcard.issuingBank
+                                                td= creditcard.issuingBank
+                                            tr
+                                                th creditcard.last4
+                                                td= creditcard.last4
+                                            tr
+                                                th creditcard.payroll
+                                                td= creditcard.payroll
+                                            tr
+                                                th creditcard.prepaid
+                                                td= creditcard.prepaid
+                                            tr
+                                                th creditcard.productId
+                                                td= creditcard.productId
+                                            tr
+                                                th creditcard.subscriptions
+                                                td= creditcard.subscriptions
+                                            tr
+                                                th creditcard.token
+                                                td= creditcard.token
+                                            tr
+                                                th creditcard.uniqueNumberIdentifier
+                                                td= creditcard.uniqueNumberIdentifier
+                                            tr
+                                                th creditcard.updatedAt
+                                                td= creditcard.updatedAt
+                                            tr
+                                                th creditcard.venmoSdk
+                                                td= creditcard.venmoSdk
+                                            tr
+                                                th creditcard.verifications
+                                                td= creditcard.verifications
+                                            tr
+                                                th creditcard.maskedNumber
+                                                td= creditcard.maskedNumber
+                                            tr
+                                                th creditcard.expirationDate
+                                                td= creditcard.expirationDate
+                                            tr
+                        
+                    if result.customer.paypalAccounts 
+                        if result.customer.paypalAccounts.length 
+                            section
+                                h5 PayPalAccounts
+                                each paypalaccount, index in result.customer.paymentMethods
+                                    h6 PayPalAccount ##{index}
+                                    table(cellpadding="0" cellspacing="0")
+                                        tbody
+                                            tr
+                                                th paypalaccount.billingAgreementId
+                                                td= paypalaccount.billingAgreementId
+                                            tr
+                                                th paypalaccount.createdAt
+                                                td= paypalaccount.createdAt
+                                            tr
+                                                th paypalaccount.customerId
+                                                td= paypalaccount.customerId
+                                            tr
+                                                th paypalaccount.default
+                                                td= paypalaccount.default
+                                            tr
+                                                th paypalaccount.email
+                                                td= paypalaccount.email
+                                            tr
+                                                th paypalaccount.globalId
+                                                td= paypalaccount.globalId
+                                            tr
+                                                th paypalaccount.imageUrl
+                                                td= paypalaccount.imageUrl
+                                            tr
+                                                th paypalaccount.subscriptions
+                                                td= paypalaccount.subscriptions
+                                            tr
+                                                th paypalaccount.token
+                                                td= paypalaccount.token
+                                            tr
+                                                th paypalaccount.updatedAt
+                                                td= paypalaccount.updatedAt
+                                            tr
+                                                th paypalaccount.isChannelInitiated
+                                                td= paypalaccount.isChannelInitiated
+                                            tr
+                                                th paypalaccount.payerId
+                                                td= paypalaccount.payerId
+                                            tr
+                                                th paypalaccount.payerInfo
+                                                td= paypalaccount.payerInfo
+                                            tr
+                                                th paypalaccount.payerInfo.shippingAddress
+                                                td= paypalaccount.payerInfo.shippingAddress
+                                            tr
+                                                th paypalaccount.payerInfo.email
+                                                td= paypalaccount.payerInfo.email
+                                            tr
+                                                th paypalaccount.payerInfo.firstName
+                                                td= paypalaccount.payerInfo.firstName
+                                            tr
+                                                th paypalaccount.payerInfo.lastName
+                                                td= paypalaccount.payerInfo.lastName
+                                            tr
+                                                th paypalaccount.payerInfo.payerId
+                                                td= paypalaccount.payerInfo.payerId
+                                            tr
+                                                th paypalaccount.payerInfo.countryCode
+                                                td= paypalaccount.payerInfo.countryCode
+                                            tr
+                                                th paypalaccount.payerInfo.limitedUseOrderId
+                                                td= paypalaccount.payerInfo.limitedUseOrderId
+                                            tr
+                                                th paypalaccount.payerInfo.revokedAt
+                                                td= paypalaccount.payerInfo.revokedAt
+                                            tr
+
+            section
+                p.center.small Integrate with the Braintree SDK for a secure and seamless checkout
+            section
+                a.button.secondary.full(href="https://developers.braintreepayments.com/guides/drop-in", target="_blank") 
+                span See the Docs

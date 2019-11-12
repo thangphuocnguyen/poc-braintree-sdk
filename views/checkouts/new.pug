@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  .wrapper: .checkout.container: .content
+    header
+      h1 Payment with Braintree using PayPal or a card
+
+    form#payment-form(action="/checkouts", method="post")
+      section
+        label(for="amount")
+          span.input-label Amount
+          .input-wrapper.amount-wrapper
+            input#amount(name="amount" type="tel" min="1" value="10")
+
+        .bt-drop-in-wrapper
+          #bt-dropin
+
+      input#nonce(type="hidden" name="payment_method_nonce")
+      button.button(type="submit")
+        span Test Transaction
+
+      p(style="word-break: break-word;") 
+        | TOKEN: #{clientToken}
+  
+  span(hidden id="client-token")=clientToken
+
+  script(src="https://js.braintreegateway.com/web/dropin/1.20.4/js/dropin.min.js")
+  script(type="text/javascript", src="/javascript/demo.js")

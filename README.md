@@ -1,8 +1,13 @@
 # Braintree Express Example
 
-# CUSTOMIZED from https://github.com/braintree/braintree_express_example
+> CUSTOMIZED from https://github.com/braintree/braintree_express_example
 
 An example Braintree integration.
+
+## Assuming
+
+0. Braintree Sandbox is configured
+0. PayPal Sandbox Account is already linked to Braintree Sandbox Account
 
 ## Setup Instructions
 
